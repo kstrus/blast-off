@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Blast off</title>
+		<script src="js/utils.js"></script>
+		<script src="js/mirror.js"></script>
+		<script src="js/board.js"></script>
+		<script src="js/laser.js"></script>
+		<link rel="stylesheet" href="css/main.css"/>
+    </head>
+    <body>
+		<div id="info">
+			<p id="close">x</p>
+			<p>Click any field to place the mirror</p>
+			<p>Click again to rotate the mirror</p>
+		</div>
+		<canvas id="lasers-canvas" width="560" height="560"></canvas>
+		<button type="button" id="fire-btn">Fire</button>
+		<button type="button" id="clear-btn">Clear board</button>
+		<div id="credits">Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+
+		<script>
+  			var canvas;
+  			var ctx;
+
+  			window.onload = function () {
+  				canvas = document.getElementById("lasers-canvas");
+  				ctx = canvas.getContext("2d");
+
+  				mirrorSprite.loadGfx();
+  				mirrorSprite.waitGfxReady();
+
+  				document.getElementById("close").addEventListener("click", function () {
+					this.parentNode.style.display = "none";
+  				});
+  			}
+		</script>
+    </body>
+</html>

@@ -6,6 +6,10 @@ var laser = {
 	speed: 2
 }
 
+laser.clear = function () {
+	laserCtx.clearRect(0, 0, laserCanvas.width, laserCanvas.height);
+}
+
 laser.shoot = function () {
 	var offsetFrames = this.speed;
 	var startFrames = Math.floor(this.offset / offsetFrames); ///nb of frames for the first section - from laser to board edge

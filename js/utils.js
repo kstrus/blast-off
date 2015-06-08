@@ -2,19 +2,20 @@ function prepareStage() {
 	board.init();
 	board.show();
 
-	canvas.addEventListener("click", function (e) {
+	laserCanvas.addEventListener("click", function (e) {
+		laser.clear();
 		board.clicked(e);
 	});
 
 	document.getElementById("fire-btn").addEventListener("click", function () {
-		board.clear();
-		board.show();
+		laser.clear();
 		laser.shoot();
 	});
 
 	document.getElementById("clear-btn").addEventListener("click", function () {
 		board.removeMirrors();
 		board.clear();
+		laser.clear();
 		board.show();
 	});
 }
@@ -54,13 +55,13 @@ function getEnter(exit) {
 }
 
 function drawLine(x1, y1, x2, y2, color, width) {
-	ctx.strokeStyle = color;
-	ctx.lineWidth = width;	
-	ctx.beginPath();
-	ctx.moveTo(x1, y1);
-	ctx.lineTo(x2, y2);
-	ctx.stroke();
-	ctx.closePath();
+	laserCtx.strokeStyle = color;
+	laserCtx.lineWidth = width;	
+	laserCtx.beginPath();
+	laserCtx.moveTo(x1, y1);
+	laserCtx.lineTo(x2, y2);
+	laserCtx.stroke();
+	laserCtx.closePath();
 }
 
 function drawHorizontalLine (x1, x2, y, color, width, frames) {

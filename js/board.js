@@ -2,7 +2,7 @@ var board = {
 	xSize: 5,
 	ySize: 5,
 	x: 82,
-	y: 82,
+	y: 52,
 	space: 4, //distance between tiles
 	tiles: [],
 	bcgFileName: "background.png",
@@ -19,17 +19,18 @@ board.init = function() {
 }
 
 board.show = function () {
-	var imgB = new Image();
-	imgB.src = "img/" + this.bcgFileName;
-	imgB.ctx = this;
+	var imgBackground = new Image();
+	imgBackground.src = "img/" + this.bcgFileName;
+	imgBackground.ctx = this;
 	
-	imgB.onload = function () {
-		ctx.drawImage(this, 0, 0);  //paint background
+	imgBackground.onload = function () {
+		//paint background
+		ctx.drawImage(this, 0, 0);
 
-		var imgL = new Image();
-		imgL.src = "img/" + this.ctx.laserGunFileName;
-		imgL.ctx = this.ctx;
-		imgL.onload = function () {
+		var imgLaser = new Image();
+		imgLaser.src = "img/" + this.ctx.laserGunFileName;
+		imgLaser.ctx = this.ctx;
+		imgLaser.onload = function () {
 			//paint laser gun
 			ctx.drawImage(this, Math.floor(this.ctx.x / 2) - Math.floor(this.width / 2), laser.row * (mirrorSprite.height + this.ctx.space) + Math.floor(mirrorSprite.height / 2) + this.ctx.y - Math.floor(this.height / 2));
 		}
@@ -42,9 +43,10 @@ board.show = function () {
 	}
 }
 
-board.clear=function() {
+board.clear=function () {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
 board.removeMirrors = function () {
 	for (var i = 0; i < this.ySize; i++)
 		for (var j = 0; j < this.xSize; j++) {
@@ -56,8 +58,8 @@ board.clicked = function (e) {
 	var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
 	var left = (document.documentElement && document.documentElement.scrollLeft) || document.body.scrollLeft;
 
-	var x = e.clientX + left - canvas.offsetLeft - this.x;
-	var y = e.clientY + top - canvas.offsetTop - this.y;
+	var x = e.clientX + left - document.getElementById("canvas-container").offsetLeft - this.x;
+	var y = e.clientY + top - 40 - this.y;
 	var row = -1;
 	var column = -1;
 
@@ -82,7 +84,6 @@ board.clicked = function (e) {
 		else {
 			this.tiles[row][column] = 0;
 		}
-		this.clear();
 		this.show();
 	}
 }

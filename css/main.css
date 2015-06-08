@@ -1,44 +1,56 @@
-* {
+html, body, p {
 	margin: 0;
-	padding: 0;
+	padding: 0;	
 }
 
 html {
 	font-family:  sans-serif;
 	font-size:  16px;
+	color: #333;
 }
 
 body {
 	background-color: #333;
-}
-
-a {
-	text-decoration:  none;
-	color: #555;
+	min-width: 600px;
+	position: relative;
 }
 
 #info {
-	position: relative;
-	width: 400px;
-	margin:  30px auto 0 auto;
+	position: absolute;
+	z-index: 50;
+	top: 145px;
+	left:  50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);	
+	box-sizing: border-box;
+	width: 500px;
 	text-align: center;
 	line-height: 1.5em;
-	padding:  15px;
-	border:  1px solid #b4cf9c;
-	color:  #b4cf9c;
+	padding:  25px 60px;
+	border:  1px solid #29411f;
+	font-size: 1.25em;
+	background-color: rgba(253,249,146,0.95);
 }
 
-#close {
-	position: absolute;
-	right: 10px;
-	top: 0;
-	cursor: pointer;
+#ok-button {
+	font-size: 0.9em;
+	margin-top:  20px;
+	width:  160px;
+}
+
+#canvas-container {
+	position: relative;
+	margin:  40px auto 20px auto;
+	border:  1px solid #3f4936;
+	width:  560px;
+	height: 500px;
 }
 
 canvas {
-	display: block;
-	margin:  40px auto 20px auto;
-	border:  1px solid #3f4936;
+	position: absolute;
+	top:  0;
+	left:  0;
 }
 
 button {
@@ -46,10 +58,12 @@ button {
 	width: 300px;
 	padding: 10px 20px;
 	margin: 0 auto;
-	font-size: 1.2em;
+	font-size: 1.125em;
 	color:  #333;
 	margin-bottom: 10px;
 	cursor: pointer;
+	border: 1px solid #333;
+	background-color:  #ddd;
 }
 
 #credits {
@@ -57,4 +71,10 @@ button {
 	margin: 40px auto 0 auto;
 	width:  400px;
 	text-align: center;
+	color: #000;
+}
+
+#credits a {
+	text-decoration:  none;
+	color: #555;
 }

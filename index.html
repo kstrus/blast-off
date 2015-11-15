@@ -8,18 +8,18 @@
 		<link rel="stylesheet" href="css/main.css"/>
     </head>
     <body>
-		<div id="info">
+		<div class="info">
 			<p>Click any field to place the mirror, click again to rotate the mirror.</p>
 			<p>Then press the FIRE button.</p>
-			<button type="button" id="ok-button">OK</button>
+			<button type="button" id="js-info-ok-btn">OK</button>
 		</div>
-		<div id="canvas-container">
-			<canvas id="board-canvas" width="560" height="500"></canvas>
-			<canvas id="laser-canvas" width="560" height="500"></canvas>
+		<div id="js-canvas-container" class="canvas-container">
+			<canvas id="js-board-canvas" width="560" height="500"></canvas>
+			<canvas id="js-laser-canvas" width="560" height="500"></canvas>
 		</div>
-		<button type="button" id="fire-btn">Fire</button>
-		<button type="button" id="clear-btn">Clear board</button>
-		<div id="credits">Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+		<button type="button" id="js-fire-btn">Fire</button>
+		<button type="button" id="js-clear-btn">Clear board</button>
+		<div class="credits">Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
 		<script src="js/utils.js"></script>
 		<script src="js/mirror.js"></script>
@@ -27,22 +27,22 @@
 		<script src="js/laser.js"></script>
 		
 		<script>
-  	var canvas;
-  	var ctx;
+            var canvas;
+            var ctx;
 
-  	window.onload = function () {
-  		canvas = document.getElementById("board-canvas");
-  		ctx = canvas.getContext("2d");
-  		laserCanvas = document.getElementById("laser-canvas");
-  		laserCtx = laserCanvas.getContext("2d");
-		
-		mirrorSprite.loadGfx();
-  		mirrorSprite.waitGfxReady();
+            window.onload = function () {
+                canvas = document.getElementById("js-board-canvas");
+                ctx = canvas.getContext("2d");
+                laserCanvas = document.getElementById("js-laser-canvas");
+                laserCtx = laserCanvas.getContext("2d");
 
-  		document.getElementById("ok-button").addEventListener("click", function () {
-  			this.parentNode.style.display = "none";
-  		});
-  	}
+                mirrorSprite.loadGfx();
+                mirrorSprite.waitGfxReady();
+
+                document.getElementById("js-info-ok-btn").addEventListener("click", function () {
+                    this.parentNode.style.display = "none";
+                });
+            }
 		</script>
     </body>
 </html>

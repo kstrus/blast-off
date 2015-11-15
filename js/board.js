@@ -58,7 +58,7 @@ board.clicked = function (e) {
 	var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
 	var left = (document.documentElement && document.documentElement.scrollLeft) || document.body.scrollLeft;
 
-	var x = e.clientX + left - document.getElementById("canvas-container").offsetLeft - this.x;
+	var x = e.clientX + left - document.getElementById("js-canvas-container").offsetLeft - this.x;
 	var y = e.clientY + top - 40 - this.y;
 	var row = -1;
 	var column = -1;

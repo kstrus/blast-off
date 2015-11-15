@@ -7,12 +7,12 @@ function prepareStage() {
 		board.clicked(e);
 	});
 
-	document.getElementById("fire-btn").addEventListener("click", function () {
+	document.getElementById("js-fire-btn").addEventListener("click", function () {
 		laser.clear();
 		laser.shoot();
 	});
 
-	document.getElementById("clear-btn").addEventListener("click", function () {
+	document.getElementById("js-clear-btn").addEventListener("click", function () {
 		board.removeMirrors();
 		board.clear();
 		laser.clear();

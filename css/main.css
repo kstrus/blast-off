@@ -15,7 +15,7 @@ body {
 	position: relative;
 }
 
-#info {
+.info {
 	position: absolute;
 	z-index: 50;
 	top: 145px;
@@ -33,13 +33,13 @@ body {
 	background-color: rgba(253,249,146,0.95);
 }
 
-#ok-button {
+.info button {
 	font-size: 0.9em;
 	margin-top:  20px;
 	width:  160px;
 }
 
-#canvas-container {
+.canvas-container {
 	position: relative;
 	margin:  40px auto 20px auto;
 	border:  1px solid #3f4936;
@@ -50,7 +50,7 @@ body {
 canvas {
 	position: absolute;
 	top:  0;
-	left:  0;
+	left:  0; 
 }
 
 button {
@@ -66,7 +66,7 @@ button {
 	background-color:  #ddd;
 }
 
-#credits {
+.credits {
 	font-size: 12px;
 	margin: 40px auto 0 auto;
 	width:  400px;
@@ -74,7 +74,7 @@ button {
 	color: #000;
 }
 
-#credits a {
+.credits a {
 	text-decoration:  none;
 	color: #555;
 }

@@ -1,97 +1,97 @@
 function prepareStage() {
-	board.init();
-	board.show();
+	Board.init();
+	Board.draw();
 
 	laserCanvas.addEventListener("click", function (e) {
-		laser.clear();
-		board.clicked(e);
+		LaserBeam.clear();
+		Board.clicked(e);
 	});
 
 	document.getElementById("js-fire-btn").addEventListener("click", function () {
-		laser.clear();
-		laser.shoot();
+		LaserBeam.clear();
+		LaserBeam.shoot();
 	});
 
 	document.getElementById("js-clear-btn").addEventListener("click", function () {
-		board.removeMirrors();
-		board.clear();
-		laser.clear();
-		board.show();
+		Board.removeMirrors();
+		Board.clear();
+		LaserBeam.clear();
+		Board.draw();
 	});
 }
 
 
 function findExit(tile, enter) {
-    if (tile == 0) {
-        if (enter == 0) return 2;
-        if (enter == 1) return 3;
-        if (enter == 2) return 0;
-        if (enter == 3) return 1;
+    if (tile === 0) {
+        if (enter === "left") return "right";
+        if (enter === "right") return "left";
+        if (enter === "top") return "bottom";
+        if (enter === "bottom") return "top";
     }
-    if (tile == 1) {
-        if (enter == 1) return 2;
-        if (enter == 2) return 1;
+    if (tile === 1) {
+        if (enter === "top") return "right";
+        if (enter === "right") return "top";
     }
-    if (tile == 2) {
-        if (enter == 2) return 3;
-        if (enter == 3) return 2;
+    if (tile === 2) {
+        if (enter === "bottom") return "right";
+        if (enter === "right") return "bottom";
     }
-    if (tile == 3) {
-        if (enter == 0) return 3;
-        if (enter == 3) return 0;
+    if (tile === 3) {
+        if (enter === "bottom") return "left";
+        if (enter === "left") return "bottom";
     }
-    if (tile == 4) {
-        if (enter == 0) return 1;
-        if (enter == 1) return 0;
+    if (tile === 4) {
+        if (enter === "top") return "left";
+        if (enter === "left") return "top";
     }
     return -1;
 }
 
 function getEnter(exit) {
-    if (exit == 0) return 2;
-    if (exit == 1) return 3;
-    if (exit == 2) return 0;
-    if (exit == 3) return 1;
+    if (exit === "top") return "bottom";
+    if (exit === "bottom") return "top";
+    if (exit === "left") return "right";
+    if (exit === "right") return "left";
 }
 
-function drawLine(x1, y1, x2, y2, color, width) {
+function drawLine(startX, startY, finishX, finishY, color, width) {
 	laserCtx.strokeStyle = color;
 	laserCtx.lineWidth = width;	
 	laserCtx.beginPath();
-	laserCtx.moveTo(x1, y1);
-	laserCtx.lineTo(x2, y2);
+	laserCtx.moveTo(startX, startY);
+	laserCtx.lineTo(finishX, finishY);
 	laserCtx.stroke();
 	laserCtx.closePath();
 }
 
-function drawHorizontalLine (x1, x2, y, color, width, frames) {
-    var distance = x2 - x1;
+function drawHorizontalLine (startX, finishX, y, color, width, frames) {
+    var distance = finishX - startX;
     var oneFrameDistance = Math.floor(distance / frames);
-    var position = x1;
+    var position = startX;
     var stepNb = 0;
 
-    while (position != x2 && stepNb<10000) {
-        if (distance > 0 && position + oneFrameDistance > x2)
-            oneFrameDistance = x2 - position;
-        else if (distance < 0 && position + oneFrameDistance < x2)
-            oneFrameDistance = x2 - position;
+    while (position != finishX && stepNb<10000) {
+        if (distance > 0 && position + oneFrameDistance > finishX)
+            oneFrameDistance = finishX - position;
+        else if (distance < 0 && position + oneFrameDistance < finishX)
+            oneFrameDistance = finishX - position;
         setTimeout(drawLine, stepNb, position, y, position + oneFrameDistance, y, color, width);
         position += oneFrameDistance;
         stepNb++;
     }
 }
 
-function drawVerticalLine(x, y1, y2, color, width, frames) {
-    var distance = y2 - y1;
+function drawVerticalLine(x, startY, finishY, color, width, frames) {
+    var distance = finishY - startY;
     var oneFrameDistance = Math.floor(distance / frames);
-    var position = y1;
+    var position = startY;
     var stepNb = 0;
 
-    while (position != y2 && stepNb < 10000) {
-        if (distance > 0 && position + oneFrameDistance > y2)
-            oneFrameDistance = y2 - position;
-        else if (distance < 0 && position + oneFrameDistance < y2)
-            oneFrameDistance = y2 - position;
+    while (position != finishY && stepNb < 10000) {
+        if (distance > 0 && position + oneFrameDistance > finishY)
+            oneFrameDistance = finishY - position;
+        else if (distance < 0 && position + oneFrameDistance < finishY)
+            oneFrameDistance = finishY - position;
         setTimeout(drawLine, stepNb, x, position, x, position + oneFrameDistance, color, width);
         position += oneFrameDistance;
         stepNb++;

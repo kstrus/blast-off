@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
-        <title>Blast off</title>
-		<link rel="stylesheet" href="css/main.css"/>
-    </head>
-    <body>
-		<div class="info">
-			<p>Click any field to place the mirror, click again to rotate the mirror.</p>
-			<p>Then press the FIRE button.</p>
-			<button type="button" id="js-info-ok-btn">OK</button>
-		</div>
-		<div id="js-canvas-container" class="canvas-container">
-			<canvas id="js-board-canvas" width="560" height="500"></canvas>
-			<canvas id="js-laser-canvas" width="560" height="500"></canvas>
-		</div>
-		<button type="button" id="js-fire-btn">Fire</button>
-		<button type="button" id="js-clear-btn">Clear board</button>
-		<div class="credits">Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <title>Blast off</title>
+    <link rel="stylesheet" href="css/main.css"/>
+  </head>
+  <body>
+    <div class="info">
+        <p>Click any field to place the mirror, click again to rotate the mirror.</p>
+        <p>Then press the FIRE button.</p>
+        <button type="button" id="js-info-ok-btn">OK</button>
+    </div>
+    <div id="js-canvas-container" class="canvas-container">
+        <canvas id="js-board-canvas" width="560" height="500"></canvas>
+        <canvas id="js-laser-canvas" width="560" height="500"></canvas>
+    </div>
+    <button type="button" id="js-fire-btn">Fire</button>
+    <button type="button" id="js-clear-btn">Clear board</button>
+    <div class="credits">Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
-		<script src="js/utils.js"></script>
-		<script src="js/mirrorSprite.js"></script>
-		<script src="js/board.js"></script>
-		<script src="js/laserGun.js"></script>
-		<script src="js/laserBeam.js"></script>
-		
-		<script>
-			var boardCanvas = document.getElementById("js-board-canvas");
-			var boardCtx = boardCanvas.getContext("2d");
-			var laserCanvas = document.getElementById("js-laser-canvas");
-			var laserCtx = laserCanvas.getContext("2d");
-
-            window.onload = function () {
-                MirrorSprite.loadGfx();
-                MirrorSprite.waitGfxReady();
-
-                document.getElementById("js-info-ok-btn").addEventListener("click", function () {
-                    this.parentNode.style.display = "none";
-                });
-            }
-		</script>
-    </body>
+    <script src="js/utils.js"></script>
+    <script src="js/mirrorSprite.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/laserGun.js"></script>
+    <script src="js/laserBeam.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
